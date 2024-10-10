@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socket.IO Chat Application</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="login-container" id="login-container">
+        <h2>Login</h2>
+        <input type="text" id="username" placeholder="Enter your username" autocomplete="off">
+        <button onclick="login()">Login</button>
+        <div id="login-error" class="error"></div>
+    </div>
+
+    <div class="chat-container" id="chat-container" style="display:none;">
+        <div id="room-container">
+            <h3 id="current-room">Current Room: </h3>
+            <input type="text" id="roomName" placeholder="Enter a room name" autocomplete="off">
+            <button onclick="joinRoom()">Join Room</button>
+        </div>
+
+        <div id="private-container">
+            <h3>Private Chat</h3>
+            <input type="text" id="recipient" placeholder="Enter recipient username" autocomplete="off">
+            <button onclick="startPrivateChat()">Start Private Chat</button>
+            <div id="private-error" class="error"></div>
+        </div>
+
+        <div id="messages-container">
+            <ul id="messages"></ul>
+        </div>
+
+        <div id="user-count">Users connected: 0</div>
+
+        <input id="message" autocomplete="off" placeholder="Type your message..." oninput="typing()">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
